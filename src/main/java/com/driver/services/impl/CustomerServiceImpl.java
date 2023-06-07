@@ -87,25 +87,18 @@ public class CustomerServiceImpl implements CustomerService {
 			tripBooking.setBill(0);
 			tripBooking.getDriver().getCab().setAvailable(true);
 			tripBooking.setStatus(TripStatus.CANCELED);
-			driverRepository2.save(tripBooking.getDriver());
+			tripBookingRepository2.save(tripBooking);
 		}
 	}
 
 	@Override
 	public void completeTrip(Integer tripId){
 		//Complete the trip having given trip Id and update TripBooking attributes accordingly
-		if(tripBookingRepository2.findById(tripId).isPresent()){
-			TripBooking tripBooking=tripBookingRepository2.findById(tripId).get();
+		if(tripBookingRepository2.findById(tripId).isPresent()) {
+			TripBooking tripBooking = tripBookingRepository2.findById(tripId).get();
+			tripBooking.getDriver().getCab().setAvailable(true);
 			tripBooking.setStatus(TripStatus.COMPLETED);
-
-			Driver driver=tripBooking.getDriver();
-			driver.getCab().setAvailable(true);
-
-			//driverRepository2.save(driver);
-
-
 			tripBookingRepository2.save(tripBooking);
-
 		}
 	}
 }
