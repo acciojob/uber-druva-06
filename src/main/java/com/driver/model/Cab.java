@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Cab{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int cabId;
     private int perKmRate;
     boolean available;
 
@@ -19,12 +19,12 @@ public class Cab{
         this.available = available;
     }
 
-    public int getId() {
-        return id;
+    public int getCabId() {
+        return cabId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCabId(int cabId) {
+        this.cabId = cabId;
     }
 
     public int getPerKmRate() {

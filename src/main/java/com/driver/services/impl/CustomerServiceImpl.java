@@ -52,7 +52,7 @@ public class CustomerServiceImpl implements CustomerService {
 			if(minDriver == null && driver.getCab().getAvailable()){
 				minDriver = driver;
 			}
-			if(minDriver!=null && driver.getCab().getAvailable() && driver.getId() < minDriver.getId()){
+			if(minDriver!=null && driver.getCab().getAvailable() && driver.getDriverId() < minDriver.getDriverId()){
 				minDriver = driver;
 			}
 		}
